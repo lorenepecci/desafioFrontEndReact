@@ -1,5 +1,6 @@
 import React from 'react';
 import { fetchAPI } from '../helpers/api';
+import ItemCard from './ItemCard';
 
 class GridResults extends React.Component {
   constructor () {
@@ -12,6 +13,7 @@ class GridResults extends React.Component {
 
   fetchAPI = async () => {
     const dataAPI = await fetchAPI();
+    console.log(dataAPI.length)
     this.setState( {
       dataAPI,
       isLoading:false,
@@ -23,16 +25,30 @@ class GridResults extends React.Component {
   }
 
   render () {
-    const { isLoading } = this.state;
+    const { isLoading, dataAPI } = this.state;
     return (
-      <div>
-        <section class="container">
+     
+        <section className="container">
           { isLoading &&
-            <section class="loading">carregando...</section>
+            <div className="loading">carregando...</div>
           }
-          <section class="body-images"></section>
+           
+           { dataAPI.length &&  dataAPI.map( ( item, index ) => (
+            <div key={index}>
+               <ItemCard 
+                index={ index }
+                imagens={item.imagens.thumbnail.url}
+                link ={item.link}
+                usuario={item.usuario.username}
+                upvotes={item.upvotes}
+                comentarios={item.comentarios}
+                criadoEm={item.criadoEm}
+              />
+            </div>
+            ))}
+         
         </section>
-      </div>
+      
     )
   }
 }
