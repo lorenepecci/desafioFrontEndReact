@@ -37,12 +37,12 @@ class GridResults extends React.Component {
                
                <ItemCard 
                 index={ index }
-                imagens={item.imagens.thumbnail.url}
+                image={item.imagens.thumbnail.url}
                 link ={item.link}
-                usuario={item.usuario.username}
+                user={item.usuario.username}
                 upvotes={item.upvotes}
-                comentarios={item.comentarios}
-                criadoEm={item.criadoEm}
+                comments={item.comentarios}
+                createdIn={item.criadoEm}
               />
             </div>
             ))}

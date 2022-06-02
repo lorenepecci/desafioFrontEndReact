@@ -2,7 +2,14 @@ body {
   background: #fff;
 }
 
-.imagem-card {
+.imagem-card img{
+  position: relative;
   width: 150px;
   height: 150px;
+}
+
+.write-card {
+  position:absolute;
+  color: white;
+  z-index: 1;
 }

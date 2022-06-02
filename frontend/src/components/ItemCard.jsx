@@ -2,19 +2,21 @@ import React from 'react';
 
 class ItemCard extends React.Component { 
   render () {
-    const { link, usuario, upvotes, comentarios, criadoEm, imagens, index } = this.props;
-    const data = new Date(criadoEm)
+    const { link, user, upvotes, comments, createdIn, image, index } = this.props;
+    const date = new Date(createdIn)
     return (
-      
-        <div key={index}>
-          
-          <p>@{ usuario }</p>
+      <div key={ index }>
+        <div className="write-card">
+          <p>@{ user }</p>
           <p>{ upvotes }</p>
-          <p>{ comentarios}</p>
-        <p>{ data.toLocaleTimeString( [], { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' } ) }</p>
-        <a href={link}>
-          <img className="imagem-card" src={ imagens } alt={ `imagem${ index }` } />
-        </a>
+          <p>{ comments}</p>
+          <p>{ date.toLocaleTimeString( [], { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' } ) }</p>
+        </div>
+        <div className="imagem-card">
+          <a href={link}>
+            <img  src={ image } alt={ `imagem${ index }` } />
+          </a>
+        </div>
         </div>
       
     )
