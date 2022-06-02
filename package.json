@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@squidit/css": "^1.3.56",
+    "react-router-dom": "^6.3.0"
+  }
+}

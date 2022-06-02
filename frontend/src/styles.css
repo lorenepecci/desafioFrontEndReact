@@ -1,3 +1,8 @@
 body {
   background: #fff;
 }
+
+.imagem-card {
+  width: 150px;
+  height: 150px;
+}
