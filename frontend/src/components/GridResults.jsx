@@ -1,9 +1,10 @@
 import React from 'react';
 import { fetchAPI } from '../helpers/api';
-import ItemCard from './ItemCard';
+import Intermediate from './Intermediate';
+import { Container } from 'react-bootstrap';
 
 class GridResults extends React.Component {
-  constructor () {
+  constructor() {
     super();
     this.state = {
       isLoading: true,
@@ -14,39 +15,36 @@ class GridResults extends React.Component {
   fetchAPI = async () => {
     const dataAPI = await fetchAPI();
     this.setState( {
-      dataAPI,
+      dataAPI:dataAPI,
       isLoading:false,
     } );
   }
 
-  componentDidMount() {
+  componentDidMount= () => {
     this.fetchAPI();
+  }
+
+  forLoop = () => {
+    const { dataAPI  } = this.state;
+    return (
+      <div>
+        <Container>
+          <Intermediate array={ dataAPI } />
+        </Container>
+      </div>
+    )
   }
 
   render () {
     const { isLoading, dataAPI } = this.state;
+    const forLoop = this.forLoop();
     return (
      
         <section className="container">
           { isLoading &&
             <div className="loading">carregando...</div>
           }
-           
-           { dataAPI.length &&  dataAPI.map( ( item, index ) => (
-             <div key={ index }>
-               
-               <ItemCard 
-                index={ index }
-                image={item.imagens.thumbnail.url}
-                link ={item.link}
-                user={item.usuario.username}
-                upvotes={item.upvotes}
-                comments={item.comentarios}
-                createdIn={item.criadoEm}
-              />
-            </div>
-            ))}
-         
+        { dataAPI.length && forLoop}
         </section>
       
     )

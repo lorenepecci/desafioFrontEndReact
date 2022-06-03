@@ -1,11 +1,13 @@
 import React from 'react';
 
+
 class ItemCard extends React.Component { 
   render () {
-    const { link, user, upvotes, comments, createdIn, image, index } = this.props;
+    const { link, user, upvotes, comments, createdIn, image } = this.props;
+    const { index } = this.props;
     const date = new Date(createdIn)
     return (
-      <div key={ index }>
+      <div key={ index } >
         <div className="write-card">
           <p>@{ user }</p>
           <p>{ upvotes }</p>
@@ -18,7 +20,6 @@ class ItemCard extends React.Component {
           </a>
         </div>
         </div>
-      
     )
   }
 }
