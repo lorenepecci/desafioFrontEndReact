@@ -6,8 +6,8 @@ import './styles.css';
 function App () {
   return (
       <div className="App">
-        <header className="App-header">
-          <img src={ logo } alt="svgLogo" />
+        <header >
+          <img  className="img-header" src={ logo } alt="svgLogo" />
         </header>
         <body>
           <GridResults />
